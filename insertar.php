@@ -30,6 +30,17 @@ public function productos(){
 			$this->sentencia = "SELECT * FROM venta v,fecha f WHERE f.id = v.id_fecha AND id_producto=$idp AND f.fecha BETWEEN '2020-01-01' AND '2020-01-31' ORDER BY id_cliente";
 			return $this->obtenerSentencia();
 		}
+
+public function matrizf($idp){
+			$this->sentencia = "SELECT * FROM venta v,fecha f WHERE f.id = v.id_fecha AND id_producto=$idp AND f.fecha BETWEEN '2020-02-01' AND '2020-02-31' ORDER BY id_cliente";
+			return $this->obtenerSentencia();
+		}
+
+
+public function matrizd($idp){
+			$this->sentencia = "SELECT * FROM venta v,fecha f WHERE f.id = v.id_fecha AND id_producto=$idp AND f.fecha BETWEEN '2020-12-01' AND '2020-12-31' ORDER BY id_cliente";
+			return $this->obtenerSentencia();
+		}
 /**$obj = new Venta();
 for ($i=0; $i <150 ; $i++) { 
 	$obj->alta();

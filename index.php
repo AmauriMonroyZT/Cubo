@@ -71,6 +71,12 @@
             border: 1px solid white;
             font-size: 0.7em;
         }
+
+
+body{
+    background-color: #01DF3A;
+}
+
     </style>
 </head>
 <body class="experiment">
@@ -121,10 +127,95 @@
                </table>
         </div>
         <div class="face three">
+        <?php 
+                require_once("insertar.php");
+                $obj = new Venta();
+                $res = $obj->clientes();
+               ?>
+    
+            <table class="egt">
+
+  <tr>
+<?php 
+                            echo "<th></th>";
+                            $contador = 1;
+                            while($fila=$res->fetch_assoc()){
+                                echo "<th id='cliente".$fila["id"]."'>".$fila["nombre"]."</th>";
+                            }
+                        ?>
+
+
+  </tr>
+
+  
+
+<?php 
+                        $res = $obj->productos();
+                        while($fila = $res->fetch_assoc()){
+                            echo "<tr>";
+                            echo "<th>".$fila["nombre"]."</th>";
+                            $res2 = $obj->matrizf($fila["id"]);
+                            $fila2 = $res2->fetch_assoc();
+                            for($i = 1; $i<=10; $i++){
+                                if($i == $fila2["id_cliente"]){
+                                    echo "<td>".$fila2["cantidad"]."</td>";
+                                    $fila2 = $res2->fetch_assoc();
+                                }else{
+                                    echo "<td></td>";
+                                }
+                            }
+                            echo "</tr>";
+                        }
+                    ?>
+
+
+</table>
             
         </div>
         <div class="face four">
-            
+                <?php 
+                require_once("insertar.php");
+                $obj = new Venta();
+                $res = $obj->clientes();
+               ?>
+    
+            <table class="egt">
+
+  <tr>
+<?php 
+                            echo "<th></th>";
+                            $contador = 1;
+                            while($fila=$res->fetch_assoc()){
+                                echo "<th id='cliente".$fila["id"]."'>".$fila["nombre"]."</th>";
+                            }
+                        ?>
+
+
+  </tr>
+
+  
+
+<?php 
+                        $res = $obj->productos();
+                        while($fila = $res->fetch_assoc()){
+                            echo "<tr>";
+                            echo "<th>".$fila["nombre"]."</th>";
+                            $res2 = $obj->matrizd($fila["id"]);
+                            $fila2 = $res2->fetch_assoc();
+                            for($i = 1; $i<=10; $i++){
+                                if($i == $fila2["id_cliente"]){
+                                    echo "<td>".$fila2["cantidad"]."</td>";
+                                    $fila2 = $res2->fetch_assoc();
+                                }else{
+                                    echo "<td></td>";
+                                }
+                            }
+                            echo "</tr>";
+                        }
+                    ?>
+
+
+</table>    
         </div>
         <div class="face five">
             
